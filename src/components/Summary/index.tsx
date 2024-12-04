@@ -1,4 +1,4 @@
-import { Container } from "./style";
+import { Container } from "./styles";
 import IconeImg from '../../assets/iconeimg.png'
 import IconeSeta from '../../assets/seta-baixo.png'
 import SetaParaCima from '../../assets/seta-cima.png';
