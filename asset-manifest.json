@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/Cashin/static/js/main.91afe545.js",
+    "static/media/logo.png": "/Cashin/static/media/logo.dfb0355be7cc8b370856.png",
+    "index.html": "/Cashin/index.html",
+    "main.91afe545.js.map": "/Cashin/static/js/main.91afe545.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.91afe545.js"
+  ]
+}
