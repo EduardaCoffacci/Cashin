@@ -1,12 +1,21 @@
 import { Container, Content, Logo } from "./styles";
 import logoImg from "../../assets/logo.png";
 
-export function Header() {
+// Define o elemento raiz do aplicativo
+
+
+interface HeaderProps {
+  onOpenNewTransactionModal: () => void;
+}
+
+export function Header({onOpenNewTransactionModal}:HeaderProps) {
   return (
     <Container>
       <Content>
         <Logo src={logoImg} alt="Cashin" />
-        <button type="button">Nova Transação</button>
+        <button onClick={onOpenNewTransactionModal} type="button">
+          Nova Transação
+        </button>
       </Content>
     </Container>
   );
