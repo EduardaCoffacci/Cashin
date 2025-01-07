@@ -4,7 +4,7 @@ import closeImg from "../../assets/janela-fechada.png";
 import incomeImg from "../../assets/seta-cima.png";
 import outComeImg from "../../assets/seta-baixo.png";
 import { FormEvent, useState } from "react";
-import { title } from "process";
+
 
 interface NewTransactionModalProps {
   isOpen: boolean;

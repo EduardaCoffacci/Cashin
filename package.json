@@ -50,8 +50,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/react-modal": "^3.16.3",
     "gh-pages": "^6.2.0"
   },
-  "homepage": "https://eduardacoffacci.github.io/dtmoney"
+  "homepage": "/"
 }
