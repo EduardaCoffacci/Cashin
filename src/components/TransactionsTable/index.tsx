@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Container } from "./styles";
-import { api } from "../../assets/services/api";
+import { api } from "../../services/api";
 
 export function TransactionsTable() {
   useEffect(() => {
