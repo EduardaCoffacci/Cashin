@@ -4,6 +4,7 @@ import closeImg from "../../assets/janela-fechada.png";
 import incomeImg from "../../assets/seta-cima.png";
 import outComeImg from "../../assets/seta-baixo.png";
 import { FormEvent, useState } from "react";
+import { api } from "../../services/api";
 
 
 interface NewTransactionModalProps {
@@ -23,11 +24,13 @@ export function NewTransactionModal({
 
   function handleCreateNewTransaction(event: FormEvent) {
     event.preventDefault();
-    console.log({ 
-      title, 
-      value, 
-      category, 
-      type });
+    const data = {
+      title,
+      value,
+      category,
+      type,
+    };
+    api.post("/transactions", data);
   }
 
   return (
