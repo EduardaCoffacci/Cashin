@@ -10,9 +10,8 @@ import { TransactionsProvider } from "./TransactionsContext";
 Modal.setAppElement("#root");
 
 function App() {
-  const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] =useState(false);
-
-  
+  const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] =
+    useState(false);
 
   function handleOpenNewTransactionModal() {
     setIsNewTransactionModalOpen(true);

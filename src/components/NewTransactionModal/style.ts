@@ -43,6 +43,7 @@ export const Container = styled.form`
     }
   }
 `;
+
 export const TransactionTypeContainer = styled.div`
   margin: 1rem 0;
   display: grid;
@@ -56,9 +57,11 @@ interface RadioBoxProps {
 }
 
 const colors = {
-  green: "#33CC95",
-  red: "#E52E40",
+  green: "#33cc95",
+  red: "#e52e4d",
 };
+
+// Aqui, usaremos `attrs` para passar as props necessárias para o botão e evitar que props personalizadas sejam passadas para o DOM
 export const RadioBox = styled.button<RadioBoxProps>`
   height: 4rem;
   border: 1px solid #d7d7d7;
@@ -87,6 +90,12 @@ export const RadioBox = styled.button<RadioBoxProps>`
     display: inline-block;
     margin-left: 1rem;
     font-size: 1rem;
-    color: var(--text-tile);
+    color: var(--text-title); /* Corrigido aqui */
   }
 `;
+
+// Em RadioBox, estamos passando os props corretos
+RadioBox.defaultProps = {
+  isActive: false,
+  activeColor: "green",
+};
