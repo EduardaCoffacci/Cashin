@@ -4,34 +4,40 @@ import closeImg from "../../assets/janela-fechada.png";
 import incomeImg from "../../assets/seta-cima.png";
 import outComeImg from "../../assets/seta-baixo.png";
 import { FormEvent, useState, useContext } from "react";
-import { api } from "../../services/api";
 import { TransactionsContext } from "../../TransactionsContext";
-
 
 interface NewTransactionModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
 }
 
-export function NewTransactionModal({isOpen,onRequestClose}: NewTransactionModalProps) {
-const {createTransaction} = useContext(TransactionsContext);
+export function NewTransactionModal({
+  isOpen,
+  onRequestClose,
+}: NewTransactionModalProps) {
+  const { createTransaction } = useContext(TransactionsContext);
 
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState("");
-
   const [type, setType] = useState("deposit");
 
-  function handleCreateNewTransaction(event: FormEvent) {
+  async function handleCreateNewTransaction(event: FormEvent) {
     event.preventDefault();
 
-    createTransaction({
+    await createTransaction({
       title,
       amount,
       category,
       type,
-    })
-    
+      createdAt: new Date().toISOString() // Adiciona a data e hora atual
+    });
+
+    setTitle("");
+    setAmount(0);
+    setCategory("");
+    setType("deposit");
+    onRequestClose();
   }
 
   return (
@@ -46,12 +52,12 @@ const {createTransaction} = useContext(TransactionsContext);
         onClick={onRequestClose}
         className="react-modal-close"
       >
-        <img src={closeImg} alt="Fechal Modal" />
+        <img src={closeImg} alt="Fechar Modal" />
       </button>
       <Container onSubmit={handleCreateNewTransaction}>
         <h2>Cadastrar Transação</h2>
         <input
-          placeholder="Titulo"
+          placeholder="Título"
           value={title}
           onChange={(event) => setTitle(event.target.value)}
         />
@@ -66,9 +72,7 @@ const {createTransaction} = useContext(TransactionsContext);
         <TransactionTypeContainer>
           <RadioBox
             type="button"
-            onClick={() => {
-              setType("deposit");
-            }}
+            onClick={() => setType("deposit")}
             isActive={type === "deposit"}
             activeColor="green"
           >
@@ -77,9 +81,7 @@ const {createTransaction} = useContext(TransactionsContext);
           </RadioBox>
           <RadioBox
             type="button"
-            onClick={() => {
-              setType("withdraw");
-            }}
+            onClick={() => setType("withdraw")}
             isActive={type === "withdraw"}
             activeColor="red"
           >
@@ -92,7 +94,6 @@ const {createTransaction} = useContext(TransactionsContext);
           value={category}
           onChange={(event) => setCategory(event.target.value)}
         />
-
         <button type="submit">Cadastrar</button>
       </Container>
     </Modal>
